@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "ORDERS") // ORDER BY 문법과 헷갈릴수 있어서 실무에서는 대부분 Order 관련된 테이블은 ORDERS 라고 표기한다.
-public class Order {
+public class Order extends BaseEntity{
 
     @Id @GeneratedValue
     @Column(name = "ORDER_ID")
