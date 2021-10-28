@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 public class Category extends BaseEntity{
 
@@ -12,14 +14,14 @@ public class Category extends BaseEntity{
 
     private String name;
 
-    @ManyToMany
+    @ManyToMany(fetch = LAZY) // @ManyToMany 의 Fetch는 default 가 "EAGER"
     @JoinTable(name = "CATEGORY_NAME",
             joinColumns = @JoinColumn(name = "CATEGORY_ID"),
             inverseJoinColumns = @JoinColumn(name = "ITEM_ID")
     )
     private List<Item> items = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne // @ManyToOne 의 Fetch는 default 가 "LAZY"
     @JoinColumn(name = "PARENT_ID")
     private Category parent;
 

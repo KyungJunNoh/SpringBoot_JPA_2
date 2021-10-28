@@ -15,7 +15,7 @@ public class Member extends BaseEntity{
     private String street;
     private String zipcode;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member") // @OneToMany의 fetch는 default가 "LAZY"
     private List<Order> orders = new ArrayList<>();
 
 }
